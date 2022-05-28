@@ -10,14 +10,19 @@ export default function stateReducer(state = initState, action) {
             return {
                 numb : state.numb++
             }
-        // case 'todos/Minus':            
-        //     if(state.numb == 0){
-        //         return state.numb--
-        //     }
-        //     return state.numb--
-        // case 'todos/todoDeleted':
-        //     state.numb=0
-        //     return state.numb
+        case 'todos/Minus':            
+            if(state.numb == 0){
+                return {
+                    numb : state.numb
+                }
+            }
+            return {
+                numb : state.numb--
+            }
+        case 'todos/todoDeleted':
+            return {
+                numb : 0
+            }
         default:
             return state
     }
@@ -33,7 +38,4 @@ export const todoMinus = () => ({
 export const todoDeleted = () => ({
     type: 'todos/todoDeleted'
 })
-export const CounterComponent = () => {
-    const counter = useSelector((state) => state.numb)
-    return counter
-  }
+export const selectTodos = state => state.numb
