@@ -1,28 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-const initState={
-    numb : 0
-}
-export default function stateReducer(state = initState, action) {
+
+export default function stateReducer(state = 0, action) {
     console.log(action);
     switch (action.type) {
-        case 'todos/todoAdded': 
-            return {
-                numb : state.numb++
+        case 'todos/todoAdded':
+            console.log(state);
+            return state+1
+        case 'todos/Minus':
+            if (state == 0) {
+                return state
             }
-        case 'todos/Minus':            
-            if(state.numb == 0){
-                return {
-                    numb : state.numb
-                }
-            }
-            return {
-                numb : state.numb--
-            }
+            console.log(state);
+            return state-1
+            
         case 'todos/todoDeleted':
-            return {
-                numb : 0
-            }
+            console.log(state);
+            return state=0
         default:
             return state
     }
@@ -38,4 +31,4 @@ export const todoMinus = () => ({
 export const todoDeleted = () => ({
     type: 'todos/todoDeleted'
 })
-export const selectTodos = state => state.numb
+
