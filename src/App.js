@@ -1,10 +1,9 @@
-
-import FindIp from './Components/FindIp';
+import Counter from './Components/Counter';
 import './body.css'
 function App() {
   return (
-     <FindIp/>
-  );
+    <Counter/>
+    );
 }
 
 export default App;
